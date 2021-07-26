@@ -24,12 +24,14 @@ services:
             mysql:
                 condition: service_healthy
         restart:
-            always  
+            always
 
     mysql:
-        image: 'mysql:8.0'
+        image: 'mysql:5.7'
+        cap_add:
+            - SYS_NICE
         ports:
-            - '${DB_PORT}:3306'
+            - '${FORWARD_DB_PORT}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
             MYSQL_DATABASE: '${DB_DATABASE}'
