@@ -24,3 +24,30 @@ docker compose down && docker system prune --all -f && docker volume prune -f
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan route:list
 
+
+
+
+
+Postman: 
+
+pm.sendRequest({
+    url: 'http://localhost:7999/sanctum/csrf-cookie',
+    method: 'GET'
+}, function (error, response, { cookies }) {
+    if (!error) {
+        pm.environment.set('xsrf-token', cookies.get('XSRF-TOKEN'))
+    }
+})
+
+
+
+
+
+Fresh install:
+
+composer create-project laravel/laravel --prefer-dist php-application
+(run migrations)
+composer require laravel/sail --dev
+(run migrations)
+composer require laravel/sanctum --dev
+(run migrations)
