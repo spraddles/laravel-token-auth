@@ -45,9 +45,11 @@ pm.sendRequest({
 
 Fresh install:
 
-composer create-project laravel/laravel --prefer-dist php-application
+composer create-project laravel/laravel php-application
 (run migrations)
 composer require laravel/sail --dev
 (run migrations)
-composer require laravel/sanctum --dev
+composer require laravel/sanctum
+(run migrations)
+composer require laravel/fortify
 (run migrations)
