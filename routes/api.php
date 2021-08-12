@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// authentication
+Route::prefix('auth')->group(function() {
+
+    // login
+    Route::post('/login', 'App\Http\Controllers\AuthController@login')
+        ->name('login');
+        
+    // logout
+    Route::post('/logout', 'App\Http\Controllers\AuthController@logout')
+        ->name('logout');
+});
+
+
 // user data
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')
+    ->name('user')
+    ->get('/user', function (Request $request) {
     return $request->user();
 });
