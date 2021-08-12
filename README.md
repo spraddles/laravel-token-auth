@@ -4,12 +4,6 @@
 
 
 
-Tasks:
--change views = false (in fortify.php) after password.reset route has been custom created (as per: https://laravel.com/docs/8.x/fortify#disabling-views-and-password-reset)
--
-
-
-
 
 Commands:
 
@@ -53,3 +47,9 @@ composer require laravel/sanctum
 (run migrations)
 composer require laravel/fortify
 (run migrations)
+
+
+
+Test email:
+
+Mail::raw('Hello World!', function($msg) {$msg->to('badsprad@hotmail.com')->from('mysender@app.com')->subject('Test Laravel Email'); });
