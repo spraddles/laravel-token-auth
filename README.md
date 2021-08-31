@@ -53,3 +53,11 @@ composer require laravel/fortify
 Test email:
 
 Mail::raw('Hello World!', function($msg) {$msg->to('badsprad@hotmail.com')->from('mysender@app.com')->subject('Test Laravel Email'); });
+
+
+
+
+
+Clear cache:
+
+php artisan cache:clear && php artisan config:cache
