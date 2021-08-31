@@ -21,10 +21,19 @@ Route::prefix('auth')->group(function() {
     // login
     Route::post('/login', 'App\Http\Controllers\AuthController@login')
         ->name('login');
-        
+
     // logout
     Route::post('/logout', 'App\Http\Controllers\AuthController@logout')
         ->name('logout');
+
+    // reset password: request
+    Route::post('/password-reset', 'App\Http\Controllers\AuthController@passwordResetEmailRequest')
+        ->name('password.reset');
+
+    // reset password: set
+    /*Route::get('/password-reset/{token}', 'App\Http\Controllers\AuthController@passwordReset')
+        ->name('password.reset');*/
+
 });
 
 
