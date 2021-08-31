@@ -8,14 +8,12 @@
 
     <body class="">
 
-        <form action="">
+        <form>
             <label for="username">Username:</label><br>
-            <input type="email" id="username" name="" value=""><br><br>
-
+            <input type="email" id="username" name="email" value=""><br><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="" value=""><br><br>
-
-            <input type="submit" value="Submit">
+            <input type="password" id="password" name="password" value=""><br><br>
+            <input type="submit" value="Submit" onClick="login()">
         </form>
 
     </body>
@@ -27,26 +25,37 @@
     </style>
 
     <script>
-        var formdata = new FormData();
 
-        // use type & id
-        formdata.append("email", document.getElementById("username").value);
-        formdata.append("password", document.getElementById("password").value);
+        function login() {
 
-        var requestOptions = {
-            method: 'POST',
-            body: formdata,
-            redirect: 'follow'
-        };
+            var formdata = new FormData();
 
-        fetch("http://localhost:7999/api/auth/login", requestOptions)
-        .then(response => response.text())
-        .then((response) => {
-            if (response.ok) {
-                window.location.replace("http://www.google.com")
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            formdata.username;
+            formdata.password;
+
+            var requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+            };
+
+            const response = fetch("http://localhost:7999/api/auth/login", requestOptions)
+
+            // success
+            if (response.status == 402) {
+                window.location.href = 'http://www.google.com'
             }
-        })
-        .catch(error => console.log('error', error));
+
+            // error
+            if (response.status == 401) {
+                window.location.href = 'http://www.facebook.com'
+                const error_message = 'Cant login: ${response.status}';
+                throw new Error(error_message);
+            }
+        }
     </script>
 
 </html>
