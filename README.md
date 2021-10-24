@@ -3,9 +3,11 @@
 * use Postman to test routes:  
   * POST: http://localhost:7999/login (with username & password)  
   * POST: http://localhost:7999/logout (with username)  
-  * POST: http://localhost:7999/password-reset (with username)  
+  * POST: http://localhost:7999/password-reset (with username) 
 
-## Helpful commands
+### Dependencies
+- composer install
+- npm install
 
 ### Laravel Sail
 - ./vendor/bin/sail up -d  
